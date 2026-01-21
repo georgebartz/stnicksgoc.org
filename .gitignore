@@ -1,48 +1,195 @@
-# Wordpress - ignore core, configuration, examples, uploads and logs.
-# https://github.com/github/gitignore/blob/main/WordPress.gitignore
-
-# Core
-#
-# Note: if you want to stage/commit WP core files
-# you can delete this whole section/until Configuration.
+# WordPress Core
 /wp-admin/
+/wp-includes/
 /wp-content/index.php
 /wp-content/languages
 /wp-content/plugins/index.php
 /wp-content/themes/index.php
-/wp-includes/
-/index.php
-/license.txt
-/readme.html
-/wp-*.php
-/xmlrpc.php
+wp-activate.php
+wp-blog-header.php
+wp-comments-post.php
+wp-config-sample.php
+wp-cron.php
+wp-links-opml.php
+wp-load.php
+wp-login.php
+wp-mail.php
+wp-settings.php
+wp-signup.php
+wp-trackback.php
+xmlrpc.php
+index.php
+license.txt
+readme.html
 
-# Configuration
+# wp-config
 wp-config.php
+wp-config-local.php
 
-# Example themes
-/wp-content/themes/twenty*/
-
-# Example plugin
-/wp-content/plugins/hello.php
-
-# Uploads
+# Uploaded files
 /wp-content/uploads/
+/wp-content/upgrade/
 
-# Log files
+# Plugins (commit only custom plugins)
+/wp-content/plugins/*
+!/wp-content/plugins/.gitkeep
+# Uncomment specific plugins you want to track:
+# !/wp-content/plugins/your-custom-plugin/
+
+# Themes (commit only your custom theme)
+/wp-content/themes/*
+!/wp-content/themes/stnicks-theme/
+!/wp-content/themes/.gitkeep
+
+# Must-use plugins (if any)
+/wp-content/mu-plugins/*
+!/wp-content/mu-plugins/.gitkeep
+
+# Lando
+.lando.yml
+.lando.*.yml
+.lando/
+
+# Development files
 *.log
+.htaccess
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.phpintel/
+*.swp
+*.swo
+*~
 
-# htaccess
-/.htaccess
+# Node.js & Package Managers
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.pnpm-store/
+.npm/
+.yarn/
+.yarn-integrity
+.node_repl_history
 
-# All plugins
-#
-# Note: If you wish to whitelist plugins,
-# uncomment the next line
-#/wp-content/plugins
+# Build output & Compiled assets
+dist/
+build/
+/wp-content/themes/stnicks-theme/css/**/*.css
+/wp-content/themes/stnicks-theme/css/**/*.css.map
+!/wp-content/themes/stnicks-theme/css/**/*.scss
+/wp-content/themes/stnicks-theme/js/**/*.min.js
+/wp-content/themes/stnicks-theme/js/**/*.min.js.map
+/wp-content/themes/stnicks-theme/js/dist/
+/wp-content/themes/stnicks-theme/js/build/
 
-# All themes
-#
-# Note: If you wish to whitelist themes,
-# uncomment the next line
-#/wp-content/themes
+# SCSS/Sass preprocessing
+.sass-cache/
+*.css.map
+.postcssrc
+.stylelintcache
+
+# Gulp
+gulpfile.js.map
+.gulp-cache/
+
+# Webpack
+webpack-stats.json
+.webpack/
+
+# Parcel
+.cache/
+.parcel-cache/
+
+# TypeScript
+*.tsbuildinfo
+.tscache/
+
+# Composer
+/vendor/
+composer.lock
+composer.phar
+
+# Backup files
+*.sql
+*.sql.gz
+*.zip
+*.tar.gz
+*.bak
+*-backup-*
+*.old
+
+# WP-CLI
+wp-cli.local.yml
+wp-cli.phar
+
+# Environment files
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+
+# Cache & Optimization
+/wp-content/cache/
+/wp-content/advanced-cache.php
+/wp-content/wp-cache-config.php
+/wp-content/object-cache.php
+/wp-content/db.php
+*.scssc
+*.sassc
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Source maps (if you don't want to commit them)
+**/*.map
+
+# OS generated files
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editor directories and files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.history/
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+
+# Misc
+.browserslistrc
+.editorconfig
+.eslintcache
