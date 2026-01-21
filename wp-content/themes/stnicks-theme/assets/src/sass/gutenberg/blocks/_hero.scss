@@ -1,0 +1,303 @@
+// Hero block
+@use '../../variables' as *;
+
+.block-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+
+  // Height variations
+  &.has-height-small {
+    min-height: 400px;
+  }
+
+  &.has-height-medium {
+    min-height: 600px;
+
+    @media (max-width: $container-mobile) {
+      min-height: 500px;
+    }
+  }
+
+  &.has-height-large {
+    min-height: 800px;
+
+    @media (max-width: $container-ipad) {
+      min-height: 600px;
+    }
+
+    @media (max-width: $container-mobile) {
+      min-height: 500px;
+    }
+  }
+
+  &.has-height-fullscreen {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    @media (max-width: $container-mobile) {
+      min-height: 100vh;
+    }
+  }
+}
+
+// Background media container
+.block-hero__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+// Background image
+.block-hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+// Background video
+.block-hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+  @media (max-width: $container-mobile) {
+    // On mobile, pause video animations if needed for performance
+    // This is handled by the HTML5 video element's autoplay attribute
+  }
+}
+
+// Overlay
+.block-hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-black);
+  z-index: 2;
+}
+
+// Content container
+.block-hero__container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: $width-grid-base;
+  margin: 0 auto;
+  padding: var(--spacing-container-padding-block) var(--spacing-container-padding-inline);
+
+  @media (max-width: $container-mobile) {
+    padding: 3rem var(--spacing-container-padding-inline);
+  }
+}
+
+// Content wrapper
+.block-hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 900px;
+
+  .has-alignment-center & {
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+  }
+
+  .has-alignment-left & {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+// Breadcrumbs
+.block-hero__breadcrumbs {
+  margin-bottom: 0.5rem;
+
+  .breadcrumbs {
+    font-size: 0.875rem;
+    color: var(--color-white);
+    opacity: 0.9;
+
+    a {
+      color: var(--color-white);
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .separator {
+      margin: 0 0.5rem;
+    }
+
+    .current {
+      opacity: 0.7;
+    }
+  }
+}
+
+// Subheading
+.block-hero__subheading {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin: 0;
+  opacity: 0.9;
+
+  @media (max-width: $container-mobile) {
+    font-size: 0.875rem;
+  }
+}
+
+// Heading
+.block-hero__heading {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-white);
+  margin: 0;
+
+  @media (max-width: $container-ipad) {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  @media (max-width: $container-mobile) {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+  }
+}
+
+// Description
+.block-hero__description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-white);
+  opacity: 0.95;
+
+  p {
+    margin: 0;
+  }
+
+  @media (max-width: $container-mobile) {
+    font-size: 1rem;
+  }
+}
+
+// Buttons container
+.block-hero__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+
+  .has-alignment-center & {
+    justify-content: center;
+  }
+
+  .has-alignment-left & {
+    justify-content: flex-start;
+  }
+
+  @media (max-width: $container-small-mobile) {
+    flex-direction: column;
+    width: 100%;
+
+    .block-hero__button {
+      width: 100%;
+    }
+  }
+}
+
+// Button
+.block-hero__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+
+  // Primary button style
+  &.is-style-primary {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border-color: var(--color-accent);
+
+    &:hover {
+      background-color: transparent;
+      color: var(--color-white);
+      border-color: var(--color-white);
+    }
+
+    &:focus {
+      outline: 2px solid var(--color-white);
+      outline-offset: 2px;
+    }
+  }
+
+  // Secondary button style
+  &.is-style-secondary {
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+
+    &:hover {
+      background-color: var(--color-white);
+      color: var(--color-accent);
+      border-color: var(--color-white);
+    }
+
+    &:focus {
+      outline: 2px solid var(--color-white);
+      outline-offset: 2px;
+    }
+  }
+
+  @media (max-width: $container-mobile) {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9375rem;
+  }
+}
+
+// Gutenberg editor specific styles
+.editor-styles-wrapper {
+  .block-hero {
+    // Ensure proper rendering in the editor
+    margin: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .block-hero__background {
+    // Show background in editor with reduced opacity for better editing
+    opacity: 0.7;
+  }
+
+  .block-hero__content {
+    // Better visibility in editor
+    position: relative;
+    z-index: 10;
+  }
+}
