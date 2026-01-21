@@ -30,6 +30,10 @@ add_filter( 'upload_mimes', __NAMESPACE__ . '\enable_webp_svg_upload' );
 add_filter( 'wp_check_filetype_and_ext', __NAMESPACE__ . '\fix_svg_mime_type', 10, 4 );
 add_filter( 'wp_prepare_attachment_for_js', __NAMESPACE__ . '\enable_svg_media_library_display', 10, 1 );
 
+// Auto-convert images to WebP on upload and serve WebP images
+add_filter( 'wp_generate_attachment_metadata', __NAMESPACE__ . '\generate_webp_on_upload', 10, 2 );
+add_filter( 'wp_get_attachment_image_src', __NAMESPACE__ . '\serve_webp_images', 10, 4 );
+
 /**
  * Scripts and styles associated hooks
  */
