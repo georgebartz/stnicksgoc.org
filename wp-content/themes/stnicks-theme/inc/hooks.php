@@ -25,6 +25,11 @@ namespace Air_Light;
 require get_theme_file_path( 'inc/hooks/general.php' );
 add_action( 'widgets_init', __NAMESPACE__ . '\widgets_init' );
 
+// Enable WebP and SVG uploads
+add_filter( 'upload_mimes', __NAMESPACE__ . '\enable_webp_svg_upload' );
+add_filter( 'wp_check_filetype_and_ext', __NAMESPACE__ . '\fix_svg_mime_type', 10, 4 );
+add_filter( 'wp_prepare_attachment_for_js', __NAMESPACE__ . '\enable_svg_media_library_display', 10, 1 );
+
 /**
  * Scripts and styles associated hooks
  */
