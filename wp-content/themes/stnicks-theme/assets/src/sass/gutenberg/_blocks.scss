@@ -12,6 +12,7 @@
 @use 'blocks/boxed';
 @use 'blocks/button-file';
 @use 'blocks/error';
+@use 'blocks/hero';
 
 // List of all blocks: https://wordpress.org/support/article/blocks/
 // Core blocks only meant for article content
@@ -30,5 +31,5 @@
   // Error block styles are now available from the top-level @use statements
 
   // ACF blocks
-  @use 'blocks/hero';
+  @import 'blocks/hero';
 }
