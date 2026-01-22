@@ -1,0 +1,420 @@
+// Content Grid block
+@use '../../variables' as *;
+@use 'sass:color';
+
+.block-content-grid {
+  width: 100%;
+  padding: var(--spacing-content-padding-block) 0;
+}
+
+// Container
+.block-content-grid__container {
+  width: 100%;
+  max-width: $width-grid-base;
+  margin: 0 auto;
+  padding: 0 var(--spacing-container-padding-inline);
+}
+
+// Header section
+.block-content-grid__header {
+  margin-bottom: 3rem;
+  text-align: center;
+
+  @media (max-width: $container-mobile) {
+    margin-bottom: 2rem;
+  }
+}
+
+.block-content-grid__heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 1rem 0;
+  color: var(--color-black);
+
+  @media (max-width: $container-mobile) {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+  }
+}
+
+.block-content-grid__description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  max-width: 800px;
+  margin: 0 auto;
+
+  p {
+    margin: 0;
+  }
+
+  @media (max-width: $container-mobile) {
+    font-size: 1rem;
+  }
+}
+
+// Grid layout
+.block-content-grid__grid {
+  display: grid;
+  width: 100%;
+
+  // Column variations
+  .has-columns-1 & {
+    grid-template-columns: 1fr;
+  }
+
+  .has-columns-2 & {
+    grid-template-columns: repeat(2, 1fr);
+
+    @media (max-width: $container-ipad) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .has-columns-3 & {
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width: $container-ipad-landscape) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: $container-mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .has-columns-4 & {
+    grid-template-columns: repeat(4, 1fr);
+
+    @media (max-width: $container-ipad-landscape) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: $container-ipad) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: $container-mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Gap variations
+  .has-gap-small & {
+    gap: 1rem;
+  }
+
+  .has-gap-medium & {
+    gap: 2rem;
+
+    @media (max-width: $container-mobile) {
+      gap: 1.5rem;
+    }
+  }
+
+  .has-gap-large & {
+    gap: 3rem;
+
+    @media (max-width: $container-mobile) {
+      gap: 2rem;
+    }
+  }
+}
+
+// Card base styles
+.block-content-grid__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  // Alignment variations
+  .has-alignment-center & {
+    text-align: center;
+  }
+
+  .has-alignment-left & {
+    text-align: left;
+  }
+}
+
+// Card image container
+.block-content-grid__card-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  // For basic and card styles
+  .has-style-basic &,
+  .has-style-card &,
+  .has-style-minimal & {
+    aspect-ratio: 4 / 3;
+    border-radius: 0.5rem 0.5rem 0 0;
+
+    img {
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+  }
+
+  // For photo background style
+  .has-style-photo-background & {
+    aspect-ratio: 3 / 4;
+    border-radius: 0.5rem;
+  }
+}
+
+// Image element
+.block-content-grid__card-image-el {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+// Photo background styles
+.block-content-grid__card-image-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.block-content-grid__card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-black);
+  z-index: 1;
+}
+
+// Card content container
+.block-content-grid__card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-grow: 1;
+  padding: 1.5rem;
+
+  // Basic style - no wrapper
+  .has-style-basic & {
+    padding: 1.25rem 0 0 0;
+  }
+
+  // Card style - with border and shadow
+  .has-style-card & {
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+
+  // Photo background - overlay content on image
+  .has-style-photo-background & {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-end;
+    z-index: 2;
+    color: var(--color-white);
+  }
+
+  // Minimal style
+  .has-style-minimal & {
+    padding: 1.25rem 0.5rem 0 0.5rem;
+  }
+}
+
+// Card hover effects
+.has-style-card .block-content-grid__card {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.has-style-photo-background .block-content-grid__card {
+  border-radius: 0.5rem;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+// Subheading
+.block-content-grid__card-subheading {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+  opacity: 0.8;
+
+  .has-style-photo-background & {
+    color: var(--color-white);
+  }
+}
+
+// Heading
+.block-content-grid__card-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+  color: var(--color-black);
+
+  .has-style-photo-background & {
+    color: var(--color-white);
+  }
+
+  @media (max-width: $container-mobile) {
+    font-size: 1.25rem;
+  }
+}
+
+// Description
+.block-content-grid__card-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin: 0;
+
+  p {
+    margin: 0;
+  }
+
+  .has-style-photo-background & {
+    color: var(--color-white);
+    opacity: 0.95;
+  }
+
+  @media (max-width: $container-mobile) {
+    font-size: 0.9375rem;
+  }
+}
+
+// CTA container
+.block-content-grid__card-cta {
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+// Button styles
+.block-content-grid__card-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+
+  // Primary button
+  &.is-style-primary {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border-color: var(--color-accent);
+
+    &:hover {
+      background-color: color.scale(#007bff, $lightness: -20%);
+      border-color: color.scale(#007bff, $lightness: -20%);
+    }
+
+    &:focus {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+  }
+
+  // Secondary button
+  &.is-style-secondary {
+    background-color: transparent;
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+
+    .has-style-photo-background & {
+      color: var(--color-white);
+      border-color: var(--color-white);
+    }
+
+    &:hover {
+      background-color: var(--color-accent);
+      color: var(--color-white);
+
+      .has-style-photo-background & {
+        background-color: var(--color-white);
+        color: var(--color-black);
+      }
+    }
+
+    &:focus {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+  }
+
+  // Text link style
+  &.is-style-text {
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--color-accent);
+    font-weight: 600;
+
+    .has-style-photo-background & {
+      color: var(--color-white);
+    }
+
+    &:hover {
+      text-decoration: underline;
+
+      .block-content-grid__card-button-arrow {
+        transform: translateX(4px);
+      }
+    }
+
+    &:focus {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+
+  @media (max-width: $container-mobile) {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+}
+
+// Arrow for text links
+.block-content-grid__card-button-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+// Gutenberg editor specific styles
+.editor-styles-wrapper {
+  .block-content-grid {
+    margin: 2rem 0;
+  }
+
+  .block-content-grid__card {
+    // Prevent hover effects from interfering with editing
+    pointer-events: auto;
+  }
+}

@@ -12,6 +12,7 @@ require get_theme_file_path( '/inc/includes/theme-setup.php' );
 
 // ACF Field Groups
 require get_theme_file_path( '/inc/acf-field-groups/hero.php' );
+require get_theme_file_path( '/inc/acf-field-groups/content-grid.php' );
 
 // Localized strings
 require get_theme_file_path( '/inc/includes/localization.php' );

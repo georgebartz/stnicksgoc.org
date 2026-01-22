@@ -111,6 +111,12 @@ add_action( 'after_setup_theme', function() {
         'prevent_cache'  => false,
         'icon'           => 'cover-image',
       ],
+      [
+        'name'           => 'content-grid',
+        'title'          => 'Content Grid',
+        'prevent_cache'  => false,
+        'icon'           => 'grid-view',
+      ],
     ],
 
     // Custom ACF block default settings
@@ -155,6 +161,7 @@ add_action( 'after_setup_theme', function() {
       ],
       'page' => [
         'acf/hero',
+        'acf/content-grid',
         'core/paragraph',
       ],
       // 'post-type' => [
