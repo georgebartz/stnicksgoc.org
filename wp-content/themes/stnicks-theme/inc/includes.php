@@ -16,6 +16,7 @@ require get_theme_file_path( '/inc/acf-options-button-colors.php' );
 // ACF Field Groups
 require get_theme_file_path( '/inc/acf-field-groups/hero.php' );
 require get_theme_file_path( '/inc/acf-field-groups/content-media.php' );
+require get_theme_file_path( '/inc/acf-field-groups/content-grid.php' );
 
 // Localized strings
 require get_theme_file_path( '/inc/includes/localization.php' );

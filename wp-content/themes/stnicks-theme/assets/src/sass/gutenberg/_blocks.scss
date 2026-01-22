@@ -14,6 +14,7 @@
 @use 'blocks/error';
 @use 'blocks/hero';
 @use 'blocks/content-media';
+@use 'blocks/content-grid';
 
 // List of all blocks: https://wordpress.org/support/article/blocks/
 // Core blocks only meant for article content
@@ -34,4 +35,5 @@
   // ACF blocks
   @import 'blocks/hero';
   @import 'blocks/content-media';
+  @import 'blocks/content-grid';
 }
